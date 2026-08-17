@@ -1,0 +1,87 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Document Extractor</title>
+</head>
+
+<body>
+
+    <h1>OCR Document Extractor</h1>
+
+    <form action="/web" method="POST" enctype="multipart/form-data">
+
+        <p>
+            <label for="model">OCR Model:</label>
+            <select name="model" id="model" required>
+                {% for model in models %}
+                    <option value="{{ model.id }}">{{ model.id }}</option>
+                {% endfor %}
+            </select>
+        </p>
+
+        <p>
+            <label for="file">PDF or Image:</label>
+            <input
+                type="file"
+                id="file"
+                name="file"
+                accept=".pdf,.png,.jpg,.jpeg,.webp,.tiff,.bmp"
+                required
+            >
+        </p>
+
+        <p>
+            <label for="message">
+                What do you want to extract?
+            </label>
+        </p>
+
+        <p>
+            <textarea
+                id="message"
+                name="message"
+                rows="8"
+                cols="60"
+                placeholder="Example: Extract all text from this document."
+                required
+            ></textarea>
+        </p>
+
+        <p>
+            <label>
+                <input
+                    type="checkbox"
+                    name="preserve_layout"
+                    value="true"
+                >
+                Preserve document layout
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input
+                    type="checkbox"
+                    name="extract_tables"
+                    value="true"
+                >
+                Extract tables
+            </label>
+        </p>
+
+        <p>
+            <button type="submit">
+                Extract
+            </button>
+        </p>
+
+    </form>
+
+</body>
+
+</html>
+```

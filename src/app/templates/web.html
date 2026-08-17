@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>web</p>
+    <form action="/web" method="POST">
+        <p>
+            <label for="model">Model:</label>
+            <select name="model" id="model">
+                {% for model in models %}
+                <option value="{{ model.id }}">{{ model.id }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <p>
+            <label for="url">URL:</label>
+            <input type="url" id="url" name="url" placeholder="https://example.com" required>
+        </p>
+        <p>
+            <label for="message">What do you want to extract?</label>
+            <textarea id="message" name="message" required></textarea>
+        </p>
+        <p>
+            <button type="submit">Extract</button>
+        </p>
+    </form>
+</body>
+
+</html>
